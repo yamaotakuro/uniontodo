@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+/* トップページ */
+.p-kv{
+  min-height: 30vh;
+  padding: 30px;
+  background: #aaa;
+  margin-bottom: 50px;
+  position: relative;
+  &__inner{
+    text-align: center;
+    height: 100%;
+    &__copy{
+      @include centering(true,true);
+      font-size:3rem;
+    }
+  }
+}
+
+.p-index{
+  .p-index_about{
+    text-align: center;
+    margin-bottom: 60px;
+    &__head{
+      font-size:2rem;
+      margin-bottom: 30px;
+    }
+    &__body{
+      p{
+        font-size:1.4rem;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width:$screen-xs-max) {
+  .p-index{
+
+  }
+}

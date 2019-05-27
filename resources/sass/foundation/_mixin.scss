@@ -1,0 +1,277 @@
+@charset "utf-8";
+// ===================================================================
+// mixinやらCSS3やら、extendも。
+// ===================================================================
+
+// border-radius
+@mixin border_radius($br_value) {
+	border-radius: $br_value;
+}
+
+//中央配置
+
+@mixin centering($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if $horizontal and $vertical {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if $horizontal {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if $vertical {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+@mixin module-triangle($size: 8px, $color: #000, $side: top, $position: 50%, $direction: regular) {
+  position: relative;
+  &::before {
+    content: "";
+    border: solid transparent;
+    display: inline-block;
+    position: absolute;
+    border-width: $size;
+    @if $direction == reverse {
+      @if $side == top {
+        border-bottom-color: $color;
+        margin-left: -$size;
+        left: $position;
+        bottom: -($size * 2);
+      }
+      @elseif $side == right {
+        border-left-color: $color;
+        margin-top: -$size;
+        left: -($size * 2);
+        top: $position;
+      }
+      @elseif $side == bottom {
+        border-top-color: $color;
+        margin-left: -$size;
+        left: $position;
+        top: -($size * 2);
+      }
+      @else {
+        border-right-color: $color;
+        margin-top: -$size;
+        right: -($size * 2);
+        top: $position;
+      }
+    }
+    @else {
+      @if $side == top {
+        border-bottom-color: $color;
+        margin-left: -$size;
+        left: $position;
+        top: -($size * 2);
+      }
+      @elseif $side == right {
+        border-left-color: $color;
+        margin-top: -$size;
+        right: -($size * 2);
+        top: $position;
+      }
+      @elseif $side == bottom {
+        border-top-color: $color;
+        margin-left: -$size;
+        left: $position;
+        bottom: -($size * 2);
+      }
+      @else {
+        border-right-color: $color;
+        margin-top: -$size;
+        left: -($size * 2);
+        top: $position;
+      }
+    }
+  }
+}
+
+@mixin module-circle($size: 8px, $color: #000, $position: 50%) {
+  position: relative;
+  &::before {
+    content: "";
+    border: solid transparent;
+    display: inline-block;
+    position: absolute;
+    background: $color;
+    height:$size;
+    width:$size;
+    top: ($position / 2);
+    margin-top: $size;
+    left: -($size * 3);
+    border-radius: $size;
+    -webkit-border-radius: $size;
+    -moz-border-radius: $size;
+  }
+}
+
+@mixin gradient-top-lighten($color:#666, $lighten:10%){
+  background-color: $color;
+  @include filter-gradient(lighten($color, $lighten), $color, vertical);
+  @include background-image(linear-gradient(lighten($color, $lighten) 0%, $color 100%));
+}
+
+@mixin gradient-top-darken($color:#666, $darken:10%){
+  background-color: $color;
+  @include filter-gradient(darken($color, $darken), $color, vertical);
+  @include background-image(linear-gradient(darken($color,  $darken) 0%, $color 100%));
+}
+
+@mixin easing($time){
+		-webkit-transition-property:all;
+			 -moz-transition-property:all;
+			 	-ms-transition-property:all;
+				 -o-transition-property:all;
+						transition-property:all;	
+		-webkit-transition-duration:$time;		
+			 -moz-transition-duration:$time;
+				-ms-transition-duration:$time;
+				 -o-transition-duration:$time;
+						transition-duration:$time;	
+		-webkit-transition-timing-function:ease;		
+			 -moz-transition-timing-function:ease;
+				-ms-transition-timing-function:ease;
+				 -o-transition-timing-function:ease;
+						transition-timing-function:ease;			
+}
+@mixin ease_in_out($time){
+		-webkit-transition-property:all;
+			 -moz-transition-property:all;
+			 	-ms-transition-property:all;
+				 -o-transition-property:all;
+						transition-property:all;	
+		-webkit-transition-duration:$time;		
+			 -moz-transition-duration:$time;
+				-ms-transition-duration:$time;
+				 -o-transition-duration:$time;
+						transition-duration:$time;	
+		-webkit-transition-timing-function:ease-in-out;		
+			 -moz-transition-timing-function:ease-in-out;
+				-ms-transition-timing-function:ease-in-out;
+				 -o-transition-timing-function:ease-in-out;
+						transition-timing-function:ease-in-out;			
+}
+@mixin easeout($duration){
+	-webkit-transition: all $duration cubic-bezier(0.165, 0.840, 0.440, 1.000); 
+	   -moz-transition: all $duration cubic-bezier(0.165, 0.840, 0.440, 1.000); 
+	     -o-transition: all $duration cubic-bezier(0.165, 0.840, 0.440, 1.000); 
+	        transition: all $duration cubic-bezier(0.165, 0.840, 0.440, 1.000); /* easeOutQuart */
+
+-webkit-transition-timing-function: cubic-bezier(0.165, 0.840, 0.440, 1.000); 
+   -moz-transition-timing-function: cubic-bezier(0.165, 0.840, 0.440, 1.000); 
+     -o-transition-timing-function: cubic-bezier(0.165, 0.840, 0.440, 1.000); 
+        transition-timing-function: cubic-bezier(0.165, 0.840, 0.440, 1.000); /* easeOutQuart */
+}
+@mixin transform($param){
+	
+	-webkit-transform: $param;
+	   -moz-transform: $param;
+		-ms-transform: $param;	
+		    transform: $param;
+}
+
+//テキストシャドウ
+$DEFAULT_box_shadow: 0px -10px 10px #ff0000, 10px 10px 10px #00ff00, -10px 10px 10px #0000ff !default;
+@mixin box-shadow($value...) {
+    @if(not existed($value...)) {
+        $value: $DEFAULT_box_shadow;
+    }
+  -webkit-box-shadow: $value;
+     -moz-box-shadow: $value;
+      -ms-box-shadow: $value;
+          box-shadow: $value;
+}
+
+//ボックスシャドウ
+$DEFAULT_box_shadow: 0px -10px 10px #ff0000, 10px 10px 10px #00ff00, -10px 10px 10px #0000ff !default;
+@mixin text-shadow($value...) {
+    @if(not existed($value...)) {
+        $value: $DEFAULT_text_shadow;
+    }
+  -webkit-text-shadow: $value;
+     -moz-text-shadow: $value;
+      -ms-text-shadow: $value;
+          text-shadow: $value;
+}
+
+//フォントサイズ
+@mixin font-size($s:1.4) {
+    font-size:($s * 10) + px;
+    font-size:$s + rem;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  filter: alpha(opacity=($opacity * 100));
+}
+
+@mixin bgsize($size){
+	
+	-webkit-background-size: $size;
+	     -o-background-size: $size;
+	        background-size: $size;
+}
+
+@mixin column($col,$margin){
+  margin-left:$margin;
+  width:($base_width - $margin * ($col - 1)) / $col;
+  float: left;
+  &:first-child{
+    margin-left:0;
+  }
+}
+
+@mixin img-border($val,$size,$style,$color) {
+  padding: $val;
+  border:$size $style $color;
+}
+
+// 余白調整用のクラス
+@for $i from 0 through 20 {
+  .mt#{$i * 5} { margin-top: 5px * $i !important; }
+  .mb#{$i * 5} { margin-bottom: 5px * $i !important; }
+  .pt#{$i * 5} { padding-top: 5px * $i !important; }
+  .pb#{$i * 5} { padding-bottom: 5px * $i !important; }
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin responsive-visibility($parent) {
+  #{$parent} {
+    display: block !important;
+  }
+  table#{$parent}  { display: table !important; }
+  tr#{$parent}     { display: table-row !important; }
+  th#{$parent},
+  td#{$parent}     { display: table-cell !important; }
+}
+
+// [converter] $parent hack
+@mixin responsive-invisibility($parent) {
+  #{$parent} {
+    display: none !important;
+  }
+}
+
+@mixin responsive-align-center($parent) {
+  #{$parent} {
+    text-align: center !important;
+  }
+}
+
+@mixin responsive-align-right($parent) {
+  #{$parent} {
+    text-align: right !important;
+  }
+}

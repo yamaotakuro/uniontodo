@@ -1,0 +1,97 @@
+@charset "utf-8";
+
+.c-post{
+	.c-body{
+		a{
+			color: $main_color;
+     	text-decoration: underline;
+     	&:hover{
+       	text-decoration: none;
+     	}
+		}
+	}
+}
+
+.c-post_list{
+	margin-bottom: 40px;
+}
+
+.c-post_box{
+	&__thumb{
+		margin-bottom: 20px;
+	}
+	&__cat{
+		color: #999;
+		font-size:1.4rem;
+		&--large{
+			font-size:1.6rem;
+		}
+	}
+	&__ttl{
+		font-size:1.6rem;
+		&--large{
+			font-size:2rem;
+		}
+	}
+}
+
+.c-ttl01{
+	text-align: center;
+	font-size:2.4rem;
+	margin-bottom: 30px;
+}
+
+.c-btn01{
+	max-width: 300px;
+	margin:0 auto;
+	a,button{
+		width: 100%;
+		display: block;
+		padding: 10px;
+		text-align: center;
+		border: none;
+		background: $main_color;
+		color: #fff;
+	}
+}
+
+
+@media only screen and (max-width:$screen-xs-max) {
+	.c-table-responsive{
+		width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+	  tbody{
+	    width: auto;
+	    position: relative;
+	    overflow-x: auto;
+	    white-space: nowrap;
+	  }
+	  tr{
+      vertical-align: top;
+	  }
+  }
+  .c-table-responsive2{
+		tr,th,td{
+			display: block;
+		}
+  }
+  .c-crumbs{
+    overflow-x: scroll;
+    white-space: nowrap;
+	}
+	
+	/* スクロールバーの装飾 */
+  .c-crumbs::-webkit-scrollbar {
+    height: 10px;
+  }
+  .c-crumbs::-webkit-scrollbar-track {
+    background-color: #FFF;
+  }
+  .c-crumbs::-webkit-scrollbar-thumb {
+    background-color: rgba( 238, 238, 238, 0.8);
+  }
+
+}

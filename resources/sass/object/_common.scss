@@ -1,0 +1,217 @@
+@charset "utf-8";
+
+.gnavi {
+	width:100%;
+	 ul {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		li {
+			flex: 1;
+		}
+	}
+}
+
+.crumbs {
+	color: $font_color;
+	margin: 10px 0;
+	li {
+		display: inline;
+	}
+}
+
+.pagetop {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	z-index: 10000;
+}
+
+/*----------------------------------------------------
+	ページ分割ナビ
+--------------------------------------------------- */
+.wp-pagenavi {
+	padding: 40px 0 40px;
+	text-align: center;
+	overflow: hidden;
+
+	a, span {
+		padding:3px 11px;
+		background:$main_color;
+		border: 1px solid $main_color;
+		color:#fff;
+		margin:  0 5px 10px 0;
+		text-decoration: none;
+		display: inline-block;
+		transition: all 0.3s ease;
+	}
+
+	span {
+		background:#fff;
+		color:$main_color;
+	}
+
+	.pages {
+		margin-right: 20px;
+	}
+
+	a:hover {
+		background:#fff;
+		color:$main_color;
+	}
+
+	.alignleft {
+		margin-top:0;
+		margin-bottom:0;
+		float:none;
+		vertical-align: top;
+		max-width: 40%;
+		display: inline-block;
+		a{
+			border: none;
+			background: none;
+			color: $main_color;
+		}
+	}
+
+	.center {
+		margin-top:0;
+		margin-bottom:0;
+		float:none;
+		display: inline-block;
+	}
+
+	.alignright {
+		margin-top:0;
+		margin-bottom:0;
+		float:none;
+		vertical-align: top;
+		max-width: 40%;
+		display: inline-block;
+		a{
+			border: none;
+			background: none;
+			color: $main_color;
+		}
+	}
+}
+
+/*----------------------------------------------------
+  送信確認ボタン
+--------------------------------------------------- */
+.c-btnArea{
+	text-align: center;
+	margin-bottom: 40px;
+	overflow: hidden;
+	input{
+		margin: 0 20px;
+	}
+}
+
+input[name="submitConfirm"]{
+	background:$main_color;
+	color: #FFF;
+	padding:0;
+	width:$submit_width;
+	height:$submit_height;
+	border:none;
+	display:block;
+	margin:20px auto;
+	cursor: pointer;
+	&:hover{
+		@include opacity(0.8);
+	}
+}
+
+/*----------------------------------------------------
+  戻るボタン
+--------------------------------------------------- */
+
+input[name="submitBack"] {
+  background:#ddd;
+	padding:0;
+	height:$submit_height;
+	border:none;
+	cursor: pointer;
+	float: left;
+	margin: 1%;
+	width: 48%;
+	&:hover{
+		@include opacity(0.8);
+	}
+}
+
+/*----------------------------------------------------
+  送信ボタン
+--------------------------------------------------- */
+input[name="submitSubmit"]{
+	background:$main_color;
+	color: #FFF;
+	height:$submit_height;
+	border:none;
+	cursor: pointer;
+	float: left;
+	margin: 1%;
+	width: 48%;
+	&:hover{
+		@include opacity(0.8);
+	}
+}
+
+
+/*----------------------------------------------------
+  完了画面のトップへ戻るボタン
+--------------------------------------------------- */
+
+.return_top{
+	background:$main_color;
+	color: #FFF!important;
+	padding:0;
+	width: $submit_width;
+	height: $submit_height;
+	line-height: $submit_height;
+	border:none;
+	display:block;
+	margin:20px auto;
+
+	&:hover{
+		@include opacity(0.8);
+	}
+}
+/*----------------------------------------------------
+  必須
+--------------------------------------------------- */
+
+.require{
+	margin-left:10px;
+	background-color:#C33;
+	padding:3px 4px ;
+	color:#fafafa;
+	font-size:1.1rem;
+	letter-spacing:1px;
+  margin: 0px 0px 0px 10px;
+	line-height:1;
+	border-radius:3px;
+	font-family:$base_font;
+}
+
+/* スマホ
+-------------------------------------------------- */
+@media only screen and (max-width:$screen-xs-max) {
+  
+}
+/* タブレット
+-------------------------------------------------- */
+@media only screen and (min-width:$screen-sm-min) and (max-width:$screen-sm-max) {
+
+}
+/* PC(small)
+-------------------------------------------------- */
+@media only screen and (min-width:$screen-md-min) and (max-width:$screen-md-max) {
+
+}
+/* PC(large)
+-------------------------------------------------- */
+@media only screen and (min-width:$screen-lg-min) {
+
+}

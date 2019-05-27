@@ -1,0 +1,182 @@
+@charset "utf-8";
+
+/* お問い合わせフォーム */
+
+.p-contact{
+
+	/*-------------------------------------
+	    お電話でのお問い合わせ
+	--------------------------------------*/
+
+	.contactTel {
+	  max-width: 898px;
+	  outline: solid 1px #ddd;
+	  border: 9px solid $main_color;
+	  margin: 30px auto;
+	  padding: 20px;
+	  text-align: center;
+	  p {
+	    margin: 0;
+	  }
+	  .number {
+	    @include font-size(2.4);
+	    font-weight: bold;
+	    margin: 15px 0;
+	  }
+	}
+
+	.mw_wp_form_confirm .contactTel {
+	  display: none;
+	}
+
+	/*-------------------------------------
+	    フォームダイアログ
+	--------------------------------------*/
+
+	.contactInput, .contactConfirm {
+	  max-width: 960px;
+	  margin: 20px auto;
+	}
+
+	.contactComplete {
+	  max-width: 960px;
+	  margin: 20px auto;
+	}
+
+
+	/*-------------------------------------
+	    フォーム入力部
+	--------------------------------------*/
+
+	.contactForm {
+	  max-width: 960px;
+	  margin: 0 auto;
+	  th, td {
+	    border-style: none;
+	    padding: 10px 0;
+	    vertical-align: top;
+	  }
+	  th {
+	    padding-right: 20px;
+	  }
+	  .require {
+	    margin-left: 10px;
+	    padding: 3px 4px;
+	    color: #fafafa;
+	    font-size: 9px;
+	    letter-spacing: 1px;
+	    margin: 0px 0px 0px 10px;
+	    line-height: 9px;
+		  @include border_radius(3px);
+	    zoom: normal;
+	    background: #C9171E;
+	  }
+	}
+
+	/*-------------------------------------
+	    メールが届かない方へ
+	--------------------------------------*/
+
+	.contactNotice {
+	  max-width: 920px;
+	  border: 1px solid #ddd;
+	  border-radius: 2px;
+	  padding: 20px;
+	  margin: 20px auto;
+	  .ttl {
+	    background: $sub_color;
+	    color: #fff;
+	    padding: 5px 20px;
+	    margin: -20px -20px 20px;
+	  }
+	  p {
+	    margin: 0;
+	  }
+	}
+}
+
+@media only screen and (max-width:$screen-xs-max) {
+	.p-contact{
+		.contactForm {
+			th, td {
+				display: block;
+				@include font-size(1.6);
+			}
+			td{
+				input{
+					width: 100%;
+				}
+				textarea{
+					width: 100%;
+				}
+				&.zip,&.tel,&.radio{
+					input{
+						width: auto;
+					}
+				}
+			}
+			input[type="radio"] {
+				position: relative;
+				-webkit-appearance: button;
+				appearance: button;
+				-moz-appearance: none;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				width: 18px;
+				height: 18px;
+				content: "";
+				background-color: #FFFFFF;
+				border: 1px solid #999999;
+				-webkit-border-radius: 24px;
+				border-radius: 24px;
+				-webkit-box-shadow: inset 4px 4px 10px rgba(0,0,0,0.2);
+				box-shadow: inset 4px 4px 10px rgba(0,0,0,0.2);
+				vertical-align: middle;
+				cursor: pointer;
+				padding: 5px;
+			}
+
+			input[type="radio"]:checked:after {
+				display: block;
+				position: absolute;
+				top: 5px;
+				left: 5px;
+				content: "";
+				width: 6px;
+				height: 6px;
+				background: $main_color;
+				-webkit-border-radius: 12px;
+				border-radius: 12px;
+			}
+			input[type="checkbox"] {
+				display: inline-block;
+				position: relative;
+				margin-right: 5px;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				-webkit-appearance: button;
+				appearance: button;
+				-moz-appearance: none;
+				width: 20px;
+				height: 20px;
+				border: 1px solid #999;
+				vertical-align: middle;
+				padding: 5px;
+			}
+
+			input[type="checkbox"]:checked::after {
+				position: absolute;
+				content: "";
+				top: -3px;
+				left: 3px;
+				width: 8px;
+				height: 14px;
+				border-right: 4px solid $main_color;
+				border-bottom: 4px solid $main_color;
+				-webkit-transform: rotate(45deg);
+				transform: rotate(45deg); 
+			}
+		}
+	}
+}
+
