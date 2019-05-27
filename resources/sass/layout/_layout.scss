@@ -19,15 +19,31 @@
 .l-header {
 	width: 100%;
 	padding: 20px 0;
-	&__info{
+	background: $main_color;
+	&__inner{
 		display: flex;
-		justify-content: flex-end;
-		&__tel{
-			display: flex;
-			li{
-				margin-left: 20px;
-			}
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__logo{
+		font-size:3rem;
+		a{
+			color: #fff;
 		}
+	}
+	&__login{
+		a{
+			color: #fff;
+		}
+	}
+	&__menu{
+		display: flex;
+		align-items: center;
+	}
+	&__name{
+		color: #fff;
+		display: block;
+		margin-left: 20px;
 	}
 }
 
