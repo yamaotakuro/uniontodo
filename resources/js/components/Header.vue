@@ -39,11 +39,16 @@ export default {
     username () {
       return this.$store.getters['auth/username']
     },
+    apiStatus () {
+      return this.$store.state.auth.apiStatus
+    },
   },
   methods: {
     async logout () {
       await this.$store.dispatch('auth/logout')
-      this.$router.push('/login')
+      if (this.apiStatus) {
+        this.$router.push('/login')
+      }
     }
   }
 }
