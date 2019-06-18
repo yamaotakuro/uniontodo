@@ -3,7 +3,7 @@
     <header>
       <Header />
     </header>
-    <main>
+    <main class="l-main">
       <div class="container">
         <RouterView />
       </div>

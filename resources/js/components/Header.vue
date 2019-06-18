@@ -9,26 +9,41 @@
           </RouterLink>
         </div>
         <div class="l-header__menu">
-          <div v-if="isLogin" class="l-header__add_task">
-            <button class="button">
-              <i class="icon ion-md-add"></i>
-              タスクを登録
-            </button>
-          </div>
-          <span v-if="isLogin" class="l-header__name">
-            {{ username }}さん
-            <button class="button button--link" @click="logout">Logout</button>
-          </span>
-          <div v-else class="l-header__login">
-            <RouterLink class="button button--link" to="/login">
-              ログイン / アカウント登録
-            </RouterLink>
-          </div>
+          <ul class="gnavi">
+            <li>
+              <RouterLink to="/todos" tag="a">
+                Todoリスト
+              </RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/users" tag="a">
+                ユーザーリスト
+              </RouterLink>
+            </li>
+          <!-- /.gnavi --></ul>
+          <div class="l-header__account_info">
+            <div v-if="isLogin" class="l-header__logout">
+              <span  class="l-header__name">
+                こんにちは{{ username }}さん
+              </span>
+              <div class="c-btn01">
+                <button @click="logout">ログアウト</button>
+              </div>
+            </div>
+            <div v-else class="l-header__login">
+              <div class="c-btn01">
+                <RouterLink to="/login">
+                  ログイン / アカウント登録
+                </RouterLink>
+              </div>
+            </div>
+          <!-- /.l-header_account_info --></div>
         </div>
       <!-- /.l-header__inner --></div>
     </div>
   </header>
 </template>
+
 
 <script>
 export default {
@@ -38,6 +53,9 @@ export default {
     },
     username () {
       return this.$store.getters['auth/username']
+    },
+    userid () {
+      return this.$store.getters['auth/userid']
     },
     apiStatus () {
       return this.$store.state.auth.apiStatus

@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import Index from './pages/Index.vue'
 import TodoList from './pages/TodoList.vue'
+import UserList from './pages/UserList.vue'
 import Login from './pages/Login.vue'
 
 import store from './store'
@@ -13,7 +15,16 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    component: Index
+  },
+  {
+    path: '/todos',
     component: TodoList
+  },
+  {
+    path: '/users/:id',
+    component: UserList,
+    props: true
   },
   {
     path: '/login',

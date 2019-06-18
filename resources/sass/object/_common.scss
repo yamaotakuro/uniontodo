@@ -1,14 +1,15 @@
 @charset "utf-8";
 
 .gnavi {
-	width:100%;
-	 ul {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		li {
-			flex: 1;
-		}
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	li{
+		margin-left: 20px;
+		font-size:1.6rem;
+	}
+	a{
+		color: #fff;
 	}
 }
 

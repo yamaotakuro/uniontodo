@@ -1963,6 +1963,7 @@ input[type=submit] {
 .l-header {
   width: 100%;
   padding: 20px 0;
+  margin-bottom: 40px;
   background: #148CC6;
 }
 
@@ -1980,8 +1981,19 @@ input[type=submit] {
   color: #fff;
 }
 
-.l-header__login a {
+.l-header__login {
+  margin-left: 30px;
+}
+
+.l-header__login button {
+  border: none;
   color: #fff;
+}
+
+.l-header__logout {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
 }
 
 .l-header__menu {
@@ -1993,6 +2005,12 @@ input[type=submit] {
   color: #fff;
   display: block;
   margin-left: 20px;
+  margin-right: 20px;
+}
+
+.l-header__account_info {
+  display: flex;
+  align-items: center;
 }
 
 /*----------------------------------------------------
@@ -2011,6 +2029,29 @@ input[type=submit] {
 .l-main pre,
 .l-main p {
   margin-bottom: 20px;
+}
+
+.l-main h1 {
+  font-size: 2.8rem;
+  margin-bottom: 50px;
+  position: relative;
+  color: #148CC6;
+}
+
+.l-main h2 {
+  margin-bottom: 30px;
+  position: relative;
+  padding-top: 10px;
+}
+
+.l-main h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 3px;
+  background: #148CC6;
 }
 
 /*----------------------------------------------------
@@ -2095,8 +2136,9 @@ input[type=submit] {
   padding: 10px;
   text-align: center;
   border: none;
-  background: #148CC6;
-  color: #fff;
+  background: #fff;
+  color: #148CC6;
+  border-radius: 5px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -2145,17 +2187,18 @@ input[type=submit] {
 }
 
 .gnavi {
-  width: 100%;
-}
-
-.gnavi ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.gnavi ul li {
-  flex: 1;
+.gnavi li {
+  margin-left: 20px;
+  font-size: 1.6rem;
+}
+
+.gnavi a {
+  color: #fff;
 }
 
 .crumbs {
