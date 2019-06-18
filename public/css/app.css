@@ -2084,38 +2084,26 @@ input[type=submit] {
 /* PC(large)
 -------------------------------------------------- */
 
-.c-post .c-body a {
-  color: #148CC6;
-  text-decoration: underline;
+.c-todo_list__card {
+  box-shadow: 0px 6px 7px 2px #f2f2f2;
+  background: #00d1b2;
 }
 
-.c-post .c-body a:hover {
-  text-decoration: none;
+.c-todo_list__card--volume1 {
+  background: #00d1b2;
 }
 
-.c-post_list {
-  margin-bottom: 40px;
+.c-todo_list__card--volume2 {
+  background: #ffdd57;
 }
 
-.c-post_box__thumb {
-  margin-bottom: 20px;
+.c-todo_list__card--volume3 {
+  background: #ff3860;
 }
 
-.c-post_box__cat {
-  color: #999;
-  font-size: 1.4rem;
-}
-
-.c-post_box__cat--large {
-  font-size: 1.6rem;
-}
-
-.c-post_box__ttl {
-  font-size: 1.6rem;
-}
-
-.c-post_box__ttl--large {
-  font-size: 2rem;
+.c-todo_list__card h3 {
+  text-align: center;
+  color: #fff;
 }
 
 .c-ttl01 {

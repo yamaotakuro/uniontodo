@@ -23,9 +23,11 @@ class TodoController extends Controller
         $todo->user_id = $request->user_id;
         $todo->title = $request->title;
         $todo->workload = $request->workload;
+        $todo->body = $request->body;
         $todo->created_at = Carbon::now();
         $todo->updated_at = Carbon::now();
         $todo->save();
+        // $todos = Todo::all();
         return $todo;
     }
     public function show(string $id)
@@ -38,13 +40,17 @@ class TodoController extends Controller
       $todo->user_id = $request->user_id;
       $todo->title = $request->title;
       $todo->workload = $request->workload;
+      $todo->body = $request->body;
       $todo->created_at = Carbon::now();
       $todo->updated_at = Carbon::now();
       $todo->save();
       return $todo;
     }
-    public function destroy(Todo $todo)
+    public function destroy(Request $request,Todo $todo)
     {
         $todo->delete();
+        $user = $request->user();
+        $todo = $user->load('todos');
+        return $todo;
     }
 }

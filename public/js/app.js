@@ -2283,12 +2283,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       todos: [],
       new_title: '',
-      new_workload: ''
+      new_workload: '',
+      new_body: ''
     };
   },
   computed: {
@@ -2308,7 +2312,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       //←axios.getでTODOリストを取得しています
       axios.get('/api/todos').then(function (res) {
-        console.log(_this.todos);
         _this.todos = res.data;
       });
     },
@@ -2326,14 +2329,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 axios.post('/api/todos', {
                   title: this.new_title,
                   workload: this.new_workload,
+                  body: this.new_body,
                   user_id: this.userid
                 }).then(function (res) {
-                  _this2.todos = res.data; // this.$set(this.todos, res.data)
-                  // this.todos = Object.assign({}, this.todos, res.data)
-                  // this.todos.push(res.data)
+                  _this2.todos.todos.push(res.data);
 
                   _this2.new_title = '';
                   _this2.new_workload = '';
+                  _this2.new_body = '';
                 });
 
               case 1:
@@ -2364,7 +2367,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 axios["delete"]('/api/todos/' + id, {
                   id: id
                 }).then(function (res) {
-                  _this3.todos = res.data; // this.createTodos()
+                  _this3.todos.todos = res.data.todos;
                 });
 
               case 1:
@@ -2384,36 +2387,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mounted: function mounted() {
     this.createTodos();
-  },
-  watch: {
-    $route: {
-      handler: function () {
-        var _handler = _asyncToGenerator(
-        /*#__PURE__*/
-        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  _context3.next = 2;
-                  return this.createTodos();
-
-                case 2:
-                case "end":
-                  return _context3.stop();
-              }
-            }
-          }, _callee3, this);
-        }));
-
-        function handler() {
-          return _handler.apply(this, arguments);
-        }
-
-        return handler;
-      }(),
-      immediate: true
-    }
   }
 });
 
@@ -4427,39 +4400,41 @@ var render = function() {
   return _c("div", [
     _c("h1", [_vm._v("リスト一覧")]),
     _vm._v(" "),
-    _c("table", { staticClass: "table" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.todos["todos"], function(todo) {
-          return _c("tr", { key: todo.id }, [
-            _c("td", [_vm._v(_vm._s(todo.id))]),
-            _vm._v(" "),
-            _c("td", [
-              _vm._v(_vm._s(todo.title) + " "),
-              _c("span", [_vm._v("作業ボリューム " + _vm._s(todo.workload))])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("div", { staticClass: "c-btn01" }, [
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        return _vm.deleteTodo(todo.id)
-                      }
-                    }
-                  },
-                  [_vm._v("完了")]
-                )
+    _c("div", { staticClass: "c-todo_list" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.todos["todos"], function(todo) {
+            return _c("div", { key: todo.id, staticClass: "col-sm-4" }, [
+              _c("div", { staticClass: "c-todo_list__card" }, [
+                _c("h3", [_vm._v(_vm._s(todo.title))]),
+                _vm._v(" "),
+                _c("div", { staticClass: "c-todo_list__inner" }, [
+                  _c("p", [_vm._v("作業ボリューム " + _vm._s(todo.workload))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("作業内容 " + _vm._s(todo.body))]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "c-btn01" }, [
+                    _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteTodo(todo.id)
+                          }
+                        }
+                      },
+                      [_vm._v("完了")]
+                    )
+                  ])
+                ])
               ])
             ])
-          ])
-        }),
-        0
-      )
+          }),
+          0
+        )
+      ])
     ]),
     _vm._v(" "),
     _vm.isLogin
@@ -4483,7 +4458,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "タスクを入力してください" },
+            attrs: { type: "text", placeholder: "タスク名を入力してください" },
             domProps: { value: _vm.new_title },
             on: {
               input: function($event) {
@@ -4491,6 +4466,33 @@ var render = function() {
                   return
                 }
                 _vm.new_title = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.new_body,
+                expression: "new_body"
+              }
+            ],
+            attrs: {
+              name: "",
+              id: "",
+              cols: "30",
+              rows: "10",
+              placeholder: "タスクの内容を入力してください"
+            },
+            domProps: { value: _vm.new_body },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.new_body = $event.target.value
               }
             }
           }),
@@ -4527,13 +4529,15 @@ var render = function() {
                 _vm._v("作業ボリュームを選択")
               ]),
               _vm._v(" "),
-              _c("option", [_vm._v("大")]),
+              _c("option", [_vm._v("1")]),
               _vm._v(" "),
-              _c("option", [_vm._v("中")]),
+              _c("option", [_vm._v("2")]),
               _vm._v(" "),
-              _c("option", [_vm._v("小")])
+              _c("option", [_vm._v("3")])
             ]
           ),
+          _vm._v(" "),
+          _c("small", [_vm._v("1→3でボリュームが大きい")]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -4572,22 +4576,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("ID")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("タスク名")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("完了ボタン")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
