@@ -1,21 +1,18 @@
 <template>
   <div>
-    <h1>{{user.name}}さん</h1>
-    <h2>Todoリスト</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>タスク名</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="todo in user['todos']" v-bind:key="todo.id">
-          <td>{{ todo.id }}</td>
-          <td>{{ todo.title }} <span>作業ボリューム {{ todo.workload }}</span></td>
-        </tr>
-      </tbody>
-    </table>
+    <h1>{{user.name}}さんのタスクリスト</h1>
+    <div class="c-todo_list">
+      <div class="row">
+        <div class="col-sm-4" v-for="todo in user['todos']" v-bind:key="todo.id">
+          <div class="c-todo_list__card" v-bind:class="todo.workload">
+            <h3>{{ todo.title }}</h3>
+            <div class="c-todo_list__inner">
+              <p>作業内容 {{ todo.body }}</p>
+            <!-- /.c-todo_list__inner --></div>
+          </div>
+        </div>
+      </div>
+    <!-- /.c-todo_list --></div>
   </div>
 </template>
 

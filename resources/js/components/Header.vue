@@ -10,16 +10,16 @@
         </div>
         <div class="l-header__menu">
           <ul class="gnavi">
-            <li>
+            <li v-if="isLogin">
               <RouterLink to="/todos" tag="a">
-                Todoリスト
+                タスクの追加・削除
               </RouterLink>
             </li>
-            <li>
+            <!-- <li>
               <RouterLink to="/users" tag="a">
                 ユーザーリスト
               </RouterLink>
-            </li>
+            </li> -->
           <!-- /.gnavi --></ul>
           <div class="l-header__account_info">
             <div v-if="isLogin" class="l-header__logout">

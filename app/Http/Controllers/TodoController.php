@@ -32,7 +32,8 @@ class TodoController extends Controller
     }
     public function show(string $id)
     {
-        // return $todo
+        $todo = Todo::find($id);
+        return $todo;
     }
     public function update(Request $request, Todo $todo)
     {
@@ -49,6 +50,8 @@ class TodoController extends Controller
     public function destroy(Request $request,Todo $todo)
     {
         $todo->delete();
+        // return $todo;
+        // $todo = Todo::where('id', $request->id)->delete();
         $user = $request->user();
         $todo = $user->load('todos');
         return $todo;

@@ -1,56 +1,64 @@
 <template>
   <div>
-    <h1>リスト一覧</h1>
+    <h1>現在のタスク一覧</h1>
     <div class="c-todo_list">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4" v-for="todo in todos['todos']" v-bind:key="todo.id">
-            <div class="c-todo_list__card">
-              <h3>{{ todo.title }}</h3>
-              <div class="c-todo_list__inner">
-                <p>作業ボリューム {{ todo.workload }}</p>
-                <p>作業内容 {{ todo.body }}</p>
-                <div class="c-btn01"><button v-on:click="deleteTodo(todo.id)">完了</button></div>
-              <!-- /.c-todo_list__inner --></div>
-            </div>
+      <div class="row">
+        <div class="col-sm-4" v-for="todo in todos['todos']" v-bind:key="todo.id">
+          <div class="c-todo_list__card">
+            <h3>{{ todo.title }}</h3>
+            <div class="c-todo_list__inner">
+              <p>作業内容 {{ todo.body }}</p>
+              <div class="c-btn01"><button v-on:click="deleteTodo(todo.id)">完了</button></div>
+            <!-- /.c-todo_list__inner --></div>
           </div>
         </div>
       </div>
     <!-- /.c-todo_list --></div>
     
-    <div v-if="isLogin" class="c-add_btn"><button>タスクを追加</button></div>
+    <div v-if="isLogin" class="p-todo_add_btn" @click="openModal"><span><i class="far fa-plus"></i></span></div>
 
-    <div class="c-modal">
-      <div class="c-modal__overlay"></div>
-      <div class="c-modal__body">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="タスク名を入力してください" v-model="new_title">
-          <textarea name="" id="" cols="30" rows="10" placeholder="タスクの内容を入力してください" v-model="new_body"></textarea>
-          <select v-model="new_workload">
-            <option disabled value="">作業ボリュームを選択</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
-          <small>1→3でボリュームが大きい</small>
+
+    <Modal @close="closeModal" v-if="modal">
+      <div class="c-modal__inner">
+        <table>
+          <tr>
+            <td><input type="text" class="form-control" placeholder="タスク名を入力してください" v-model="new_title"></td>
+          </tr>
+          <tr>
+            <td><textarea name="" id="" cols="30" rows="10" placeholder="タスクの内容を入力してください" v-model="new_body"></textarea></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="c-common_select">
+                <select v-model="new_workload">
+                  <option disabled value="">作業ボリュームを選択</option>
+                  <option value="volume1">ボリューム小</option>
+                  <option value="volume2">ボリューム中</option>
+                  <option value="volume3">ボリューム大</option>
+                </select>
+              </div>
+            </td>
+          </tr>
           <input type="hidden" name="" v-model="userid">
-          <span class="input-group-btn">
-            <button class="btn btn-success" type="button" v-on:click="addTodo">タスクを登録する</button> <!-- ←v-on:clickを追記 -->
-          </span>
-        </div>
-      <!-- /.c-modal__body --></div>
-    <!-- /.c-modal --></div>
+        </table>
+        <div class="todo_add_btn" v-on:click="addTodo">タスクを登録する</div>
+      </div>
+    </Modal>
   </div>
 </template>
 
+
 <script>
+import Modal from '../components/Modal.vue'
 export default {
+  components: { Modal },
   data () {
     return {
       todos: [],
       new_title: '',
       new_workload: '',
       new_body: '',
+      modal: false,
     }
   },
   computed: {
@@ -81,7 +89,7 @@ export default {
         this.new_title = ''
         this.new_workload = ''
         this.new_body = ''
-        
+        this.closeModal()
       })
     },
     async deleteTodo(id){ //←追記
@@ -89,8 +97,15 @@ export default {
         id: id
       }).then((res)=>{   
         this.todos.todos = res.data.todos
+        this.closeModal()
       })
-    }
+    },
+    openModal() {
+      this.modal = true
+    },
+    closeModal() {
+      this.modal = false
+    },
   },
   mounted() {
     this.createTodos()
