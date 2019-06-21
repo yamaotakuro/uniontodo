@@ -29,11 +29,6 @@ export default {
       required: true
     }
   },
-  // computed: {
-  //   userid () {
-  //     return this.$store.getters['auth/userid']
-  //   },
-  // },
   methods: {
     async fetchTodos(){ //←axios.getでTODOリストを取得しています
       axios.get(`/api/users/${this.id}`).then((res)=>{

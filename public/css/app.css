@@ -10267,9 +10267,12 @@ input[type=submit] {
 -----------------------------------------------------*/
 
 .l-footer {
-  width: 100%;
   padding: 30px;
-  background: #999;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .l-footer__copyright {
@@ -10363,6 +10366,43 @@ input[type=submit] {
   border: none;
   background: #fff;
   color: #148CC6;
+  border-radius: 5px;
+}
+
+.c-btn02 {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.c-btn02 a,
+.c-btn02 button {
+  cursor: pointer;
+  width: 100%;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  background: #aaa;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1.6rem;
+}
+
+.c-btn03 {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.c-btn03 a,
+.c-btn03 button {
+  cursor: pointer;
+  width: 100%;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  background: #148CC6;
+  color: #fff;
   border-radius: 5px;
 }
 
@@ -10508,12 +10548,31 @@ input[type=submit] {
 }
 
 .gnavi li {
-  margin-left: 20px;
+  margin-left: 30px;
   font-size: 1.6rem;
 }
 
 .gnavi a {
   color: #fff;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.gnavi a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.gnavi a:hover::before {
+  opacity: 1;
+  bottom: 0;
 }
 
 .crumbs {
@@ -10780,7 +10839,7 @@ input[name=submitSubmit]:hover {
 
 .p-login {
   width: 500px;
-  height: 100vh;
+  height: 70vh;
   margin: 0 auto;
   position: relative;
 }
@@ -10854,6 +10913,23 @@ input[name=submitSubmit]:hover {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   font-size: 2rem;
+}
+
+.p-acount_info {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.p-acount_info table th,
+.p-acount_info table td {
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 1.6rem;
+}
+
+.p-acount_info table th {
+  width: 20%;
 }
 
 .u-list {

@@ -5,6 +5,7 @@ import Index from './pages/Index.vue'
 import TodoList from './pages/TodoList.vue'
 import UserList from './pages/UserList.vue'
 import Login from './pages/Login.vue'
+import MyPage from './pages/MyPage.vue'
 
 import store from './store'
 import SystemError from './pages/errors/System.vue'
@@ -27,9 +28,10 @@ const routes = [
     props: true
   },
   {
-    path: '/login',
-    component: Login
+    path: '/mypage',
+    component: MyPage
   },
+
   {
     path: '/login',
     component: Login,
@@ -51,5 +53,6 @@ const router = new VueRouter({
   mode: 'history',
   routes
 })
+
 
 export default router

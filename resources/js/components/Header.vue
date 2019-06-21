@@ -9,17 +9,17 @@
           </RouterLink>
         </div>
         <div class="l-header__menu">
-          <ul class="gnavi">
-            <li v-if="isLogin">
+          <ul class="gnavi" v-if="isLogin">
+            <li>
               <RouterLink to="/todos" tag="a">
                 タスクの追加・削除
               </RouterLink>
             </li>
-            <!-- <li>
-              <RouterLink to="/users" tag="a">
-                ユーザーリスト
+            <li>
+              <RouterLink to="/mypage" tag="a">
+                マイページ
               </RouterLink>
-            </li> -->
+            </li>
           <!-- /.gnavi --></ul>
           <div class="l-header__account_info">
             <div v-if="isLogin" class="l-header__logout">

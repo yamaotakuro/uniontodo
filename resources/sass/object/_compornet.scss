@@ -73,6 +73,39 @@
 	}
 }
 
+.c-btn02{
+	max-width: 300px;
+	margin:0 auto;
+	a,button{
+		cursor: pointer;
+		width: 100%;
+		display: block;
+		padding: 10px;
+		text-align: center;
+		border: none;
+		background: #aaa;
+		color: #fff;
+		border-radius: 5px;
+		font-size:1.6rem;
+	}
+}
+
+.c-btn03{
+	max-width: 300px;
+	margin:0 auto;
+	a,button{
+		cursor: pointer;
+		width: 100%;
+		display: block;
+		padding: 10px;
+		text-align: center;
+		border: none;
+		background: $main_color;
+		color: #fff;
+		border-radius: 5px;
+	}
+}
+
 
 .c-common_select{
 	overflow: hidden;

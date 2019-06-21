@@ -35,7 +35,7 @@
                   <td><input type="password" class="form__item" id="login-password" v-model="loginForm.password"></td>
                 </tr>
               </table>
-              <div class="c-btn01">
+              <div class="c-btn03">
                 <button type="submit" class="button button--inverse">ログイン</button>
               </div>
             </form>
@@ -74,7 +74,7 @@
                 </tr>
               </table>
               
-              <div class="c-btn01">
+              <div class="c-btn03">
                 <button type="submit" class="button button--inverse">登録</button>
               </div>
             </form>

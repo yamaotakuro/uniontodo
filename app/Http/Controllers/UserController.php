@@ -80,8 +80,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,User $user)
     {
-        //
+        $user->delete();
+        // return $user;
+        $user = User::where('id', $request->id)->delete();
+        return $user;
     }
 }
