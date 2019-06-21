@@ -1,6 +1,8 @@
+@charset "utf-8";
+
 .p-login{
   width: 500px;
-  height: 100vh;
+  height: 70vh;
   margin:0 auto;
   position: relative;
   &__inner{
@@ -15,17 +17,25 @@
       padding: 20px;
       text-align: center;
       width: 50%;
+      background: #f5f5f5;
       &.is-act{
-        background: $main_color;
-        color: #fff;
+        background: #fff;
       }
     }
   }
   &__panel{
     padding: 30px;
-    background: #f5f5f5;
-    label{
-      display: block;
+    background: #fff;
+    table{
+      th,td{
+        border: none;
+        vertical-align: middle;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      input{
+        width: 100%;
+      }
     }
   }
   .c-btn01{

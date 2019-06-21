@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+.p-todo_add_btn{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: $main_color;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  box-shadow:0px 6px 7px 2px #ddd;
+  cursor: pointer;
+  span{
+    display: block;
+    @include centering(true,true);
+    font-size:2rem;
+  }
+}

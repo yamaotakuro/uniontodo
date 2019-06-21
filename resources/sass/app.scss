@@ -15,6 +15,9 @@
 // グリッド
 @import "foundation/grid";
 
+// FontAwesome
+@import "foundation/ico";
+
 // レスポンシブユーティリティ
 @import "foundation/responsive-utilities";
 
@@ -47,7 +50,8 @@
 //各ページのスタイル
 @import "object/pages/_index";
 @import "object/pages/_login";
-@import "object/pages/_contact";
+@import "object/pages/_todos";
+@import "object/pages/_mypage";
 
 // 汎用クラス
 @import "object/_utility";

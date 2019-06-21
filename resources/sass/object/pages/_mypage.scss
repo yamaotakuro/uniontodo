@@ -1,0 +1,15 @@
+.p-acount_info{
+  max-width: 800px;
+  margin:0 auto;
+  table{
+    th,td{
+      text-align: left;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      font-size:1.6rem;
+    }
+    th{
+      width: 20%;
+    }
+  }
+}

@@ -1,36 +1,52 @@
 @charset "utf-8";
-
-.c-post{
-	.c-body{
-		a{
-			color: $main_color;
-     	text-decoration: underline;
-     	&:hover{
-       	text-decoration: none;
-     	}
+.c-todo_list{
+	margin-bottom: 50px;
+	&__card{
+		box-shadow:0px 6px 7px 2px #f2f2f2;
+		padding: 30px;
+		color: #fff;
+		background: #ddd;
+		margin-bottom: 30px;
+		&.volume1{
+			background: #00d1b2;
+			.c-btn01{
+				button{
+					color: #00d1b2;
+				}
+			}
 		}
-	}
-}
-
-.c-post_list{
-	margin-bottom: 40px;
-}
-
-.c-post_box{
-	&__thumb{
-		margin-bottom: 20px;
-	}
-	&__cat{
-		color: #999;
-		font-size:1.4rem;
-		&--large{
+		&.volume2{
+			background: #ffdd57;
+			.c-btn01{
+				button{
+					color: #ffdd57;
+				}
+			}
+		}
+		&.volume3{
+			background: #ff3860;
+			.c-btn01{
+				button{
+					color: #ff3860;
+				}
+			}
+		}
+		h3{
+			text-align: center;
+			color: #fff;
+			margin-bottom: 30px;
+			font-size:2rem;
+		}
+		p{
 			font-size:1.6rem;
 		}
-	}
-	&__ttl{
-		font-size:1.6rem;
-		&--large{
-			font-size:2rem;
+		.c-btn01{
+			button{
+				font-weight: bold;
+				font-size:1.8rem;
+				background: #aaa;
+				color: #fff;
+			}
 		}
 	}
 }
@@ -45,6 +61,40 @@
 	max-width: 300px;
 	margin:0 auto;
 	a,button{
+		cursor: pointer;
+		width: 100%;
+		display: block;
+		padding: 10px;
+		text-align: center;
+		border: none;
+		background: #fff;
+		color: $main_color;
+		border-radius: 5px;
+	}
+}
+
+.c-btn02{
+	max-width: 300px;
+	margin:0 auto;
+	a,button{
+		cursor: pointer;
+		width: 100%;
+		display: block;
+		padding: 10px;
+		text-align: center;
+		border: none;
+		background: #aaa;
+		color: #fff;
+		border-radius: 5px;
+		font-size:1.6rem;
+	}
+}
+
+.c-btn03{
+	max-width: 300px;
+	margin:0 auto;
+	a,button{
+		cursor: pointer;
 		width: 100%;
 		display: block;
 		padding: 10px;
@@ -52,9 +102,89 @@
 		border: none;
 		background: $main_color;
 		color: #fff;
+		border-radius: 5px;
 	}
 }
 
+
+.c-common_select{
+	overflow: hidden;
+	width: 90%;
+	text-align: center;
+	position: relative;
+	border: 1px solid #bbbbbb;
+	border-radius: 10px;
+	background: #ffffff;
+	font-size:1.6rem;
+	&::before {
+		position: absolute;
+		top: 50%;
+		right: 0.9em;
+		transform: translateY(-50%);
+		width: 0;
+		height: 0;
+		padding: 0;
+		content: '';
+		border-left: 6px solid transparent;
+		border-right: 6px solid transparent;
+		border-top: 6px solid #666666;
+		pointer-events: none;
+	}
+	select {
+		width: 100%;
+		padding-right: 1em;
+		cursor: pointer;
+		text-indent: 0.01px;
+		text-overflow: ellipsis;
+		border: none;
+		outline: none;
+		background: transparent;
+		background-image: none;
+		box-shadow: none;
+		-webkit-appearance: none;
+		appearance: none;
+		padding: 8px 33px 8px 8px;
+		color: #666666;
+		font-size:1.6rem;
+		&::-ms-expand {
+			display: none;
+		}
+	}
+}
+
+
+.c-modal {
+  &__inner{
+		padding: 40px;
+		min-width: 800px;
+    table{
+			margin-bottom: 30px;
+      th,td{
+				border: none;
+				input,textarea{
+					padding: 15px;
+					border-radius: 5px;
+					width: 100%;
+				}
+      }
+		}
+		.c-common_select{
+			width: 70%;
+		}
+		.todo_add_btn{
+			background:$main_color;
+			color: #fff;
+			text-align: center;
+			padding: 10px;
+			border-radius: 15px;
+			max-width: 300px;
+			margin:0 auto;
+			font-weight: bold;
+			font-size:1.8rem;
+			cursor: pointer;
+		}
+  }
+}
 
 @media only screen and (max-width:$screen-xs-max) {
 	.c-table-responsive{

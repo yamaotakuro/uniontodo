@@ -19,15 +19,44 @@
 .l-header {
 	width: 100%;
 	padding: 20px 0;
-	&__info{
+	margin-bottom: 40px;
+	background: $main_color;
+	&__inner{
 		display: flex;
-		justify-content: flex-end;
-		&__tel{
-			display: flex;
-			li{
-				margin-left: 20px;
-			}
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__logo{
+		font-size:3rem;
+		a{
+			color: #fff;
 		}
+	}
+	&__login{
+		margin-left: 30px;
+		button{
+			border: none;
+			color: #fff;
+		}
+	}
+	&__logout{
+		display: flex;
+		align-items: center;
+		margin-left: 20px;
+	}
+	&__menu{
+		display: flex;
+		align-items: center;
+	}
+	&__name{
+		color: #fff;
+		display: block;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+	&__account_info{
+		display: flex;
+		align-items: center;
 	}
 }
 
@@ -38,6 +67,26 @@
 	line-height: 180%;
 	table, ol, ul, dl, blockquote, pre, p {
 		margin-bottom: $base_margin_bottom;
+	}
+	h1{
+		font-size: 2.8rem;
+		margin-bottom: 50px;
+		position: relative;
+		color:$main_color;
+	}
+	h2{
+		margin-bottom: 30px;
+		position: relative;
+		padding-top: 10px;
+		&::before{
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 50px;
+			height: 3px;
+			background: $main_color;
+		}
 	}
 }
 
@@ -53,9 +102,11 @@
 -----------------------------------------------------*/
 
 .l-footer {
-	width: 100%;
 	padding: 30px;
-	background: #999;
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
 	&__copyright{
 		text-align: center;
 	}

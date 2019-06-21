@@ -1,34 +1,32 @@
 @charset "utf-8";
 
-/* トップページ */
-.p-kv{
-  min-height: 30vh;
-  padding: 30px;
-  background: #aaa;
-  margin-bottom: 50px;
-  position: relative;
-  &__inner{
-    text-align: center;
-    height: 100%;
-    &__copy{
-      @include centering(true,true);
-      font-size:3rem;
-    }
-  }
-}
 
 .p-index{
-  .p-index_about{
-    text-align: center;
-    margin-bottom: 60px;
-    &__head{
-      font-size:2rem;
+  max-width: 800px;
+  margin:0 auto;
+  .p-index_user_list{
+    li{
+      border: 1px solid #ddd;
+      background: #fff;
       margin-bottom: 30px;
-    }
-    &__body{
-      p{
-        font-size:1.4rem;
-        margin-bottom: 10px;
+      position: relative;
+      box-shadow:0px 6px 7px 2px #f2f2f2;
+      a{
+        display: block;
+        font-size:1.6rem;
+        padding: 20px;
+        transition: all 0.3s ease-in-out;
+        &:hover{
+          background: #eee;
+        }
+      }
+      i{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 30px;
+        color:$main_color;
+        font-size:2.4rem;
       }
     }
   }
