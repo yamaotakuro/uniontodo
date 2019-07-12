@@ -11,6 +11,7 @@ const store = new Vuex.Store({
     auth,
     error
   }
+
 })
 
 export default store
