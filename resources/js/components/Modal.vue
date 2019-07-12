@@ -29,7 +29,6 @@
   &__body{
     background: #fff;
     border-radius: 4px;
-    overflow: hidden;
     position: relative;
     z-index: 10;
     transform: translateY(-20px);

@@ -8,6 +8,10 @@
             <h3>{{ todo.title }}</h3>
             <div class="c-todo_list__inner">
               <p>作業内容 {{ todo.body }}</p>
+              <ul>
+                <li>納期：{{ todo.date }}</li>
+                <li>進捗：{{ todo.progress }}</li>
+              </ul>
               <div class="c-btn01"><button v-on:click="deleteTodo(todo.id)">完了</button></div>
             <!-- /.c-todo_list__inner --></div>
           </div>
@@ -29,12 +33,34 @@
           </tr>
           <tr>
             <td>
+              <flat-pickr
+                v-model="new_date"
+                :config="config"
+                placeholder="納期を入力"               
+                name="date">
+              </flat-pickr>
+            </td>
+          </tr>
+          <tr>
+            <td>
               <div class="c-common_select">
                 <select v-model="new_workload">
                   <option disabled value="">作業ボリュームを選択</option>
                   <option value="volume1">ボリューム小</option>
                   <option value="volume2">ボリューム中</option>
                   <option value="volume3">ボリューム大</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="c-common_select">
+                <select v-model="new_progress">
+                  <option disabled value="">作業進捗を選択</option>
+                  <option value="作業前">作業前</option>
+                  <option value="作業中">作業中</option>
+                  <option value="確認中">確認中</option>
                 </select>
               </div>
             </td>
@@ -50,15 +76,33 @@
 
 <script>
 import Modal from '../components/Modal.vue'
+// import Datepicker from 'vuejs-datepicker';
+// import {ja} from 'vuejs-datepicker/dist/locale'
+import Moment from 'moment';
+import flatPickr from 'vue-flatpickr-component'
+import { Japanese } from 'flatpickr/dist/l10n/ja'
+import 'flatpickr/dist/flatpickr.css'
 export default {
-  components: { Modal },
+  components: { 
+    Modal,
+    flatPickr,
+    Moment
+  },
   data () {
     return {
       todos: [],
       new_title: '',
       new_workload: '',
       new_body: '',
+      new_date: '',
+      new_progress: '',
       modal: false,
+      config: {
+        altFormat: 'Y/m/d',
+        altInput: true,
+        minDate: 'today',
+        locale: Japanese,
+      }, 
     }
   },
   computed: {
@@ -83,12 +127,16 @@ export default {
         title: this.new_title,
         workload: this.new_workload,
         body: this.new_body,
+        date: this.new_date,
+        progress: this.new_progress,
         user_id: this.userid
       }).then((res)=>{
         this.todos.todos.push(res.data)
         this.new_title = ''
         this.new_workload = ''
         this.new_body = ''
+        this.new_date = ''
+        this.new_progress = ''
         this.closeModal()
       })
     },
@@ -106,6 +154,9 @@ export default {
     closeModal() {
       this.modal = false
     },
+    customformat: function(value){
+      return Moment(value).format('YYYY-MM-DD');
+    }
   },
   mounted() {
     this.createTodos()

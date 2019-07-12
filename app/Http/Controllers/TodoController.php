@@ -24,6 +24,8 @@ class TodoController extends Controller
         $todo->title = $request->title;
         $todo->workload = $request->workload;
         $todo->body = $request->body;
+        $todo->date = $request->date;
+        $todo->progress = $request->progress;
         $todo->created_at = Carbon::now();
         $todo->updated_at = Carbon::now();
         $todo->save();
@@ -42,6 +44,8 @@ class TodoController extends Controller
       $todo->title = $request->title;
       $todo->workload = $request->workload;
       $todo->body = $request->body;
+      $todo->date = $request->date;
+      $todo->progress = $request->progress;
       $todo->created_at = Carbon::now();
       $todo->updated_at = Carbon::now();
       $todo->save();

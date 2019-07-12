@@ -7,7 +7,12 @@
           <div class="c-todo_list__card" v-bind:class="todo.workload">
             <h3>{{ todo.title }}</h3>
             <div class="c-todo_list__inner">
-              <p>作業内容 {{ todo.body }}</p>
+              <p>作業内容： {{ todo.body }}</p>
+              <ul>
+                <li>納期：{{ todo.date }}</li>
+                <li>進捗：{{ todo.progress }}</li>
+              </ul>
+
             <!-- /.c-todo_list__inner --></div>
           </div>
         </div>
