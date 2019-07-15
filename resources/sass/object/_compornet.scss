@@ -7,6 +7,13 @@
 		color: #fff;
 		background: #ddd;
 		margin-bottom: 30px;
+		&.-edit_card{
+			background: #fcfcfc;
+			color: $font_color;
+			h3{
+				color: $font_color;
+			}
+		}
 		&.volume1{
 			background: #00d1b2;
 			.c-btn01{
@@ -46,6 +53,16 @@
 				font-size:1.8rem;
 				background: #aaa;
 				color: #fff;
+			}
+			&.-complete{
+				button{
+					background: #00d1b2;
+				}
+			}
+			&.-edit{
+				button{
+					background: #ffdd57;
+				}
 			}
 		}
 	}

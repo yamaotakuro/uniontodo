@@ -2350,6 +2350,178 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/TodoEdit.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/TodoEdit.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-flatpickr-component */ "./node_modules/vue-flatpickr-component/dist/vue-flatpickr.min.js");
+/* harmony import */ var vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var flatpickr_dist_l10n_ja__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! flatpickr/dist/l10n/ja */ "./node_modules/flatpickr/dist/l10n/ja.js");
+/* harmony import */ var flatpickr_dist_l10n_ja__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(flatpickr_dist_l10n_ja__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! flatpickr/dist/flatpickr.css */ "./node_modules/flatpickr/dist/flatpickr.css");
+/* harmony import */ var flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_3__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    flatPickr: vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_1___default.a
+  },
+  data: function data() {
+    return {
+      todos: [],
+      title: '',
+      workload: '',
+      body: '',
+      date: '',
+      progress: '',
+      config: {
+        altFormat: 'Y/m/d',
+        altInput: true,
+        minDate: 'today',
+        locale: flatpickr_dist_l10n_ja__WEBPACK_IMPORTED_MODULE_2__["Japanese"]
+      }
+    };
+  },
+  props: {
+    id: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    isLogin: function isLogin() {
+      return this.$store.getters['auth/check'];
+    },
+    userid: function userid() {
+      return this.$store.getters['auth/userid'];
+    },
+    apiStatus: function apiStatus() {
+      return this.$store.state.auth.apiStatus;
+    }
+  },
+  methods: {
+    createTodos: function createTodos() {
+      var _this = this;
+
+      //←axios.getでTODOリストを取得しています
+      axios.get("/api/todos/".concat(this.id)).then(function (res) {
+        var self = _this;
+        self.title = res.data.title, self.workload = res.data.workload, self.body = res.data.body, self.date = res.data.date, self.progress = res.data.progress, self.user_id = res.data.user_id;
+      });
+    },
+    updateTodo: function () {
+      var _updateTodo = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _this2 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                axios.put("/api/todos/".concat(this.id), {
+                  title: this.title,
+                  workload: this.workload,
+                  body: this.body,
+                  date: this.date,
+                  progress: this.progress,
+                  user_id: this.userid
+                }).then(function (res) {
+                  var id = res.data.id;
+                  console.log(id, _this2.todos.todos); // const index = this.todos.todos.findIndex((v) => v.id === id);
+                  // this.todos.todos.splice(index, 1, value);    
+                  // this.todos.todos.push(res.data)
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function updateTodo() {
+        return _updateTodo.apply(this, arguments);
+      }
+
+      return updateTodo;
+    }()
+  },
+  mounted: function mounted() {
+    this.createTodos();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/TodoList.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/TodoList.vue?vue&type=script&lang=js& ***!
@@ -2452,6 +2624,64 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
  // import Datepicker from 'vuejs-datepicker';
 // import {ja} from 'vuejs-datepicker/dist/locale'
 
@@ -2468,12 +2698,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       todos: [],
+      editTodos: [],
       new_title: '',
       new_workload: '',
       new_body: '',
       new_date: '',
       new_progress: '',
       modal: false,
+      addIf: true,
       config: {
         altFormat: 'Y/m/d',
         altInput: true,
@@ -2546,8 +2778,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return addTodo;
     }(),
-    deleteTodo: function () {
-      var _deleteTodo = _asyncToGenerator(
+    showTodo: function () {
+      var _showTodo = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id) {
         var _this3 = this;
@@ -2556,13 +2788,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                //←追記
-                axios["delete"]('/api/todos/' + id, {
-                  id: id
-                }).then(function (res) {
-                  _this3.todos.todos = res.data.todos;
-
-                  _this3.closeModal();
+                axios.get('/api/todos/' + id).then(function (res) {
+                  _this3.editTodos = res.data;
                 });
 
               case 1:
@@ -2573,20 +2800,99 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }));
 
-      function deleteTodo(_x) {
+      function showTodo(_x) {
+        return _showTodo.apply(this, arguments);
+      }
+
+      return showTodo;
+    }(),
+    updateTodo: function () {
+      var _updateTodo = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
+        var _this4 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                axios.put('/api/todos/' + id, {
+                  title: this.editTodos.title,
+                  workload: this.editTodos.workload,
+                  body: this.editTodos.body,
+                  date: this.editTodos.date,
+                  progress: this.editTodos.progress,
+                  user_id: this.editTodos.userid
+                }).then(function (res) {
+                  var id = res.data.id;
+
+                  var index = _this4.todos.todos.findIndex(function (v) {
+                    return v.id === id;
+                  });
+
+                  _this4.todos.todos.splice(index, 1, res.data);
+
+                  _this4.closeModal();
+                });
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function updateTodo(_x2) {
+        return _updateTodo.apply(this, arguments);
+      }
+
+      return updateTodo;
+    }(),
+    deleteTodo: function () {
+      var _deleteTodo = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+        var _this5 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                //←追記
+                axios["delete"]('/api/todos/' + id, {
+                  id: id
+                }).then(function (res) {
+                  _this5.todos.todos = res.data.todos;
+
+                  _this5.closeModal();
+                });
+
+              case 1:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      function deleteTodo(_x3) {
         return _deleteTodo.apply(this, arguments);
       }
 
       return deleteTodo;
     }(),
     openModal: function openModal() {
+      this.addIf = true;
       this.modal = true;
     },
     closeModal: function closeModal() {
       this.modal = false;
     },
-    customformat: function customformat(value) {
-      return moment__WEBPACK_IMPORTED_MODULE_2___default()(value).format('YYYY-MM-DD');
+    openEditModal: function openEditModal(id) {
+      this.addIf = false;
+      this.modal = true;
+      this.showTodo(id);
     }
   },
   mounted: function mounted() {
@@ -25674,6 +25980,245 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/TodoEdit.vue?vue&type=template&id=7d1eec0e&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/TodoEdit.vue?vue&type=template&id=7d1eec0e& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h1", [_vm._v("タスク変種")]),
+    _vm._v(" "),
+    _c("table", [
+      _c("tr", [
+        _c("td", [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.todos,
+                expression: "todos"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", placeholder: "タスク名を入力してください" },
+            domProps: { value: _vm.todos },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.todos = $event.target.value
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: this.body,
+                expression: "this.body"
+              }
+            ],
+            attrs: {
+              name: "",
+              id: "",
+              cols: "30",
+              rows: "10",
+              placeholder: "タスクの内容を入力してください"
+            },
+            domProps: { value: this.body },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(this, "body", $event.target.value)
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c(
+          "td",
+          [
+            _c("flat-pickr", {
+              attrs: {
+                config: _vm.config,
+                placeholder: "納期を入力",
+                name: "date"
+              },
+              model: {
+                value: this.date,
+                callback: function($$v) {
+                  _vm.$set(this, "date", $$v)
+                },
+                expression: "this.date"
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [
+          _c("div", { staticClass: "c-common_select" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: this.workload,
+                    expression: "this.workload"
+                  }
+                ],
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      this,
+                      "workload",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { disabled: "", value: "" } }, [
+                  _vm._v("作業ボリュームを選択")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "volume1" } }, [
+                  _vm._v("ボリューム小")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "volume2" } }, [
+                  _vm._v("ボリューム中")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "volume3" } }, [
+                  _vm._v("ボリューム大")
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("td", [
+          _c("div", { staticClass: "c-common_select" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: this.progress,
+                    expression: "this.progress"
+                  }
+                ],
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      this,
+                      "progress",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { disabled: "", value: "" } }, [
+                  _vm._v("作業進捗を選択")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "作業前" } }, [
+                  _vm._v("作業前")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "作業中" } }, [
+                  _vm._v("作業中")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "確認中" } }, [_vm._v("確認中")])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.userid,
+            expression: "userid"
+          }
+        ],
+        attrs: { type: "hidden", name: "" },
+        domProps: { value: _vm.userid },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.userid = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "todo_add_btn", on: { click: _vm.updateTodo } }, [
+      _vm._v("タスクを編集する")
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/TodoList.vue?vue&type=template&id=9baf3ae6&":
 /*!******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/TodoList.vue?vue&type=template&id=9baf3ae6& ***!
@@ -25700,7 +26245,7 @@ var render = function() {
           { staticClass: "row" },
           _vm._l(_vm.todos["todos"], function(todo) {
             return _c("div", { key: todo.id, staticClass: "col-sm-4" }, [
-              _c("div", { staticClass: "c-todo_list__card" }, [
+              _c("div", { staticClass: "c-todo_list__card -edit_card" }, [
                 _c("h3", [_vm._v(_vm._s(todo.title))]),
                 _vm._v(" "),
                 _c("div", { staticClass: "c-todo_list__inner" }, [
@@ -25712,18 +26257,38 @@ var render = function() {
                     _c("li", [_vm._v("進捗：" + _vm._s(todo.progress))])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "c-btn01" }, [
-                    _c(
-                      "button",
-                      {
-                        on: {
-                          click: function($event) {
-                            return _vm.deleteTodo(todo.id)
-                          }
-                        }
-                      },
-                      [_vm._v("完了")]
-                    )
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-xs-6" }, [
+                      _c("div", { staticClass: "c-btn01 -complete" }, [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.deleteTodo(todo.id)
+                              }
+                            }
+                          },
+                          [_vm._v("完了")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-xs-6" }, [
+                      _c("div", { staticClass: "c-btn01 -edit" }, [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.openEditModal(todo.id)
+                              }
+                            }
+                          },
+                          [_vm._v("編集")]
+                        )
+                      ])
+                    ])
                   ])
                 ])
               ])
@@ -25744,221 +26309,479 @@ var render = function() {
       _vm.modal
         ? _c("Modal", { on: { close: _vm.closeModal } }, [
             _c("div", { staticClass: "c-modal__inner" }, [
-              _c("table", [
-                _c("tr", [
-                  _c("td", [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.new_title,
-                          expression: "new_title"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "タスク名を入力してください"
-                      },
-                      domProps: { value: _vm.new_title },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+              _vm.addIf
+                ? _c("div", [
+                    _c("table", [
+                      _c("tr", [
+                        _c("td", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.new_title,
+                                expression: "new_title"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "タスク名を入力してください"
+                            },
+                            domProps: { value: _vm.new_title },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.new_title = $event.target.value
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.new_body,
+                                expression: "new_body"
+                              }
+                            ],
+                            attrs: {
+                              name: "",
+                              id: "",
+                              cols: "30",
+                              rows: "10",
+                              placeholder: "タスクの内容を入力してください"
+                            },
+                            domProps: { value: _vm.new_body },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.new_body = $event.target.value
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c(
+                          "td",
+                          [
+                            _c("flat-pickr", {
+                              attrs: {
+                                config: _vm.config,
+                                placeholder: "納期を入力",
+                                name: "date"
+                              },
+                              model: {
+                                value: _vm.new_date,
+                                callback: function($$v) {
+                                  _vm.new_date = $$v
+                                },
+                                expression: "new_date"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _c("div", { staticClass: "c-common_select" }, [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.new_workload,
+                                    expression: "new_workload"
+                                  }
+                                ],
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.new_workload = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  { attrs: { disabled: "", value: "" } },
+                                  [_vm._v("作業ボリュームを選択")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "volume1" } }, [
+                                  _vm._v("ボリューム小")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "volume2" } }, [
+                                  _vm._v("ボリューム中")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "volume3" } }, [
+                                  _vm._v("ボリューム大")
+                                ])
+                              ]
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _c("div", { staticClass: "c-common_select" }, [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.new_progress,
+                                    expression: "new_progress"
+                                  }
+                                ],
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.new_progress = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  { attrs: { disabled: "", value: "" } },
+                                  [_vm._v("作業進捗を選択")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "作業前" } }, [
+                                  _vm._v("作業前")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "作業中" } }, [
+                                  _vm._v("作業中")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "確認中" } }, [
+                                  _vm._v("確認中")
+                                ])
+                              ]
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.userid,
+                            expression: "userid"
                           }
-                          _vm.new_title = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.new_body,
-                          expression: "new_body"
-                        }
-                      ],
-                      attrs: {
-                        name: "",
-                        id: "",
-                        cols: "30",
-                        rows: "10",
-                        placeholder: "タスクの内容を入力してください"
-                      },
-                      domProps: { value: _vm.new_body },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        attrs: { type: "hidden", name: "" },
+                        domProps: { value: _vm.userid },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.userid = $event.target.value
                           }
-                          _vm.new_body = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c(
-                    "td",
-                    [
-                      _c("flat-pickr", {
-                        attrs: {
-                          config: _vm.config,
-                          placeholder: "納期を入力",
-                          name: "date"
-                        },
-                        model: {
-                          value: _vm.new_date,
-                          callback: function($$v) {
-                            _vm.new_date = $$v
-                          },
-                          expression: "new_date"
                         }
                       })
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [
-                    _c("div", { staticClass: "c-common_select" }, [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.new_workload,
-                              expression: "new_workload"
-                            }
-                          ],
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.new_workload = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { disabled: "", value: "" } }, [
-                            _vm._v("作業ボリュームを選択")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "volume1" } }, [
-                            _vm._v("ボリューム小")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "volume2" } }, [
-                            _vm._v("ボリューム中")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "volume3" } }, [
-                            _vm._v("ボリューム大")
-                          ])
-                        ]
-                      )
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "todo_add_btn",
+                        on: { click: _vm.addTodo }
+                      },
+                      [_vm._v("タスクを登録する")]
+                    )
                   ])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [
-                    _c("div", { staticClass: "c-common_select" }, [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.new_progress,
-                              expression: "new_progress"
+                : _c("div", [
+                    _c("table", [
+                      _c("tr", [
+                        _c("td", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editTodos.title,
+                                expression: "editTodos.title"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "タスク名を入力してください"
+                            },
+                            domProps: { value: _vm.editTodos.title },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editTodos,
+                                  "title",
+                                  $event.target.value
+                                )
+                              }
                             }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editTodos.body,
+                                expression: "editTodos.body"
+                              }
+                            ],
+                            attrs: {
+                              name: "",
+                              id: "",
+                              cols: "30",
+                              rows: "10",
+                              placeholder: "タスクの内容を入力してください"
+                            },
+                            domProps: { value: _vm.editTodos.body },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editTodos,
+                                  "body",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c(
+                          "td",
+                          [
+                            _c("flat-pickr", {
+                              attrs: {
+                                config: _vm.config,
+                                placeholder: "納期を入力",
+                                name: "date"
+                              },
+                              model: {
+                                value: _vm.editTodos.date,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.editTodos, "date", $$v)
+                                },
+                                expression: "editTodos.date"
+                              }
+                            })
                           ],
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.new_progress = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { disabled: "", value: "" } }, [
-                            _vm._v("作業進捗を選択")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "作業前" } }, [
-                            _vm._v("作業前")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "作業中" } }, [
-                            _vm._v("作業中")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "確認中" } }, [
-                            _vm._v("確認中")
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _c("div", { staticClass: "c-common_select" }, [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.editTodos.workload,
+                                    expression: "editTodos.workload"
+                                  }
+                                ],
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.editTodos,
+                                      "workload",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  { attrs: { disabled: "", value: "" } },
+                                  [_vm._v("作業ボリュームを選択")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "volume1" } }, [
+                                  _vm._v("ボリューム小")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "volume2" } }, [
+                                  _vm._v("ボリューム中")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "volume3" } }, [
+                                  _vm._v("ボリューム大")
+                                ])
+                              ]
+                            )
                           ])
-                        ]
-                      )
-                    ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _c("div", { staticClass: "c-common_select" }, [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.editTodos.progress,
+                                    expression: "editTodos.progress"
+                                  }
+                                ],
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.editTodos,
+                                      "progress",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  { attrs: { disabled: "", value: "" } },
+                                  [_vm._v("作業進捗を選択")]
+                                ),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "作業前" } }, [
+                                  _vm._v("作業前")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "作業中" } }, [
+                                  _vm._v("作業中")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "確認中" } }, [
+                                  _vm._v("確認中")
+                                ])
+                              ]
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.userid,
+                            expression: "userid"
+                          }
+                        ],
+                        attrs: { type: "hidden", name: "" },
+                        domProps: { value: _vm.userid },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.userid = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "todo_add_btn",
+                        on: {
+                          click: function($event) {
+                            return _vm.updateTodo(_vm.editTodos.id)
+                          }
+                        }
+                      },
+                      [_vm._v("タスクを編集する")]
+                    )
                   ])
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.userid,
-                      expression: "userid"
-                    }
-                  ],
-                  attrs: { type: "hidden", name: "" },
-                  domProps: { value: _vm.userid },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.userid = $event.target.value
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "todo_add_btn", on: { click: _vm.addTodo } },
-                [_vm._v("タスクを登録する")]
-              )
             ])
           ])
         : _vm._e()
@@ -42476,6 +43299,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/TodoEdit.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/pages/TodoEdit.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TodoEdit_vue_vue_type_template_id_7d1eec0e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TodoEdit.vue?vue&type=template&id=7d1eec0e& */ "./resources/js/pages/TodoEdit.vue?vue&type=template&id=7d1eec0e&");
+/* harmony import */ var _TodoEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TodoEdit.vue?vue&type=script&lang=js& */ "./resources/js/pages/TodoEdit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TodoEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TodoEdit_vue_vue_type_template_id_7d1eec0e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TodoEdit_vue_vue_type_template_id_7d1eec0e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/TodoEdit.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/TodoEdit.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/pages/TodoEdit.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TodoEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./TodoEdit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/TodoEdit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TodoEdit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/TodoEdit.vue?vue&type=template&id=7d1eec0e&":
+/*!************************************************************************!*\
+  !*** ./resources/js/pages/TodoEdit.vue?vue&type=template&id=7d1eec0e& ***!
+  \************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TodoEdit_vue_vue_type_template_id_7d1eec0e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./TodoEdit.vue?vue&type=template&id=7d1eec0e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/TodoEdit.vue?vue&type=template&id=7d1eec0e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TodoEdit_vue_vue_type_template_id_7d1eec0e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TodoEdit_vue_vue_type_template_id_7d1eec0e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/TodoList.vue":
 /*!*****************************************!*\
   !*** ./resources/js/pages/TodoList.vue ***!
@@ -42684,8 +43576,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_UserList_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/UserList.vue */ "./resources/js/pages/UserList.vue");
 /* harmony import */ var _pages_Login_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Login.vue */ "./resources/js/pages/Login.vue");
 /* harmony import */ var _pages_MyPage_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/MyPage.vue */ "./resources/js/pages/MyPage.vue");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
-/* harmony import */ var _pages_errors_System_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/errors/System.vue */ "./resources/js/pages/errors/System.vue");
+/* harmony import */ var _pages_TodoEdit_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/TodoEdit.vue */ "./resources/js/pages/TodoEdit.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var _pages_errors_System_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/errors/System.vue */ "./resources/js/pages/errors/System.vue");
+
 
 
 
@@ -42710,10 +43604,15 @@ var routes = [{
   path: '/mypage',
   component: _pages_MyPage_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
 }, {
+  path: '/todos/:id',
+  name: 'Edit',
+  component: _pages_TodoEdit_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
+  props: true
+}, {
   path: '/login',
   component: _pages_Login_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
   beforeEnter: function beforeEnter(to, from, next) {
-    if (_store__WEBPACK_IMPORTED_MODULE_7__["default"].getters['auth/check']) {
+    if (_store__WEBPACK_IMPORTED_MODULE_8__["default"].getters['auth/check']) {
       next('/');
     } else {
       next();
@@ -42721,7 +43620,7 @@ var routes = [{
   }
 }, {
   path: '/500',
-  component: _pages_errors_System_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+  component: _pages_errors_System_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',

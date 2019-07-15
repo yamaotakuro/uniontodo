@@ -37,19 +37,17 @@ class TodoController extends Controller
         $todo = Todo::find($id);
         return $todo;
     }
-    public function update(Request $request, Todo $todo)
+    public function update(Request $request, $id)
     {
-      $todo->id = $request->id;
-      $todo->user_id = $request->user_id;
-      $todo->title = $request->title;
-      $todo->workload = $request->workload;
-      $todo->body = $request->body;
-      $todo->date = $request->date;
-      $todo->progress = $request->progress;
-      $todo->created_at = Carbon::now();
-      $todo->updated_at = Carbon::now();
-      $todo->save();
-      return $todo;
+        
+        $todo = Todo::find($id);
+        $todo->title = $request->title;
+        $todo->workload = $request->workload;
+        $todo->body = $request->body;
+        $todo->date = $request->date;
+        $todo->progress = $request->progress;
+        $todo->save();
+        return $todo;
     }
     public function destroy(Request $request,Todo $todo)
     {

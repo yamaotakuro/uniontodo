@@ -6,6 +6,7 @@ import TodoList from './pages/TodoList.vue'
 import UserList from './pages/UserList.vue'
 import Login from './pages/Login.vue'
 import MyPage from './pages/MyPage.vue'
+import TodoEdit from './pages/TodoEdit.vue'
 
 import store from './store'
 import SystemError from './pages/errors/System.vue'
@@ -31,7 +32,12 @@ const routes = [
     path: '/mypage',
     component: MyPage
   },
-
+  {
+    path: '/todos/:id',
+    name: 'Edit',
+    component: TodoEdit,
+    props: true
+  },
   {
     path: '/login',
     component: Login,

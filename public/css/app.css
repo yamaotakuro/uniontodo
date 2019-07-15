@@ -10298,6 +10298,15 @@ input[type=submit] {
   margin-bottom: 30px;
 }
 
+.c-todo_list__card.-edit_card {
+  background: #fcfcfc;
+  color: #333;
+}
+
+.c-todo_list__card.-edit_card h3 {
+  color: #333;
+}
+
 .c-todo_list__card.volume1 {
   background: #00d1b2;
 }
@@ -10338,6 +10347,14 @@ input[type=submit] {
   font-size: 1.8rem;
   background: #aaa;
   color: #fff;
+}
+
+.c-todo_list__card .c-btn01.-complete button {
+  background: #00d1b2;
+}
+
+.c-todo_list__card .c-btn01.-edit button {
+  background: #ffdd57;
 }
 
 .c-ttl01 {
